@@ -51,11 +51,16 @@ class UserData:
         return
 
     def initSaveFile(self):
-        if not os.path.isfile(self.curDir + "\\save.csv"):
+        if not os.path.exists(self.curDir + "\\userdata"):
+            os.makedirs(self.curDir + "\\userdata")
             open(self.curDir + "\\userdata\\save.csv", "w", newline='')
-
-        if not os.path.isfile(self.curDir + "\\links.csv"):
             open(self.curDir + "\\userdata\\links.csv", "w", newline='')
+        else:
+            if not os.path.isfile(self.curDir + "\\userdata\\save.csv"):
+                open(self.curDir + "\\userdata\\save.csv", "w", newline='')
+
+            if not os.path.isfile(self.curDir + "\\userdata\\links.csv"):
+                open(self.curDir + "\\userdata\\links.csv", "w", newline='')
 
     def getPathToFolder(self):
         return self.pathToFolder
